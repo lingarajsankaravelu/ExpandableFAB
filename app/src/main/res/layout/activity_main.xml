@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hourglass.lingaraj.expandablefab.MainActivity">
-    <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
 
 <LinearLayout
     android:orientation="vertical"
@@ -26,9 +22,9 @@
         android:clickable="true"
         android:contentDescription="@null"
         android:layout_marginBottom="5dp"
+        android:visibility="invisible"
+        android:onClick="shareExpandableFabClick"
         />
-
-
 
     <ImageButton
         android:layout_width="40dp"
@@ -41,6 +37,8 @@
         android:clickable="true"
         android:contentDescription="@null"
         android:layout_marginBottom="5dp"
+        android:visibility="invisible"
+        android:onClick="linkExpandableFabClick"
         />
 
 
@@ -55,6 +53,8 @@
             android:clickable="true"
             android:contentDescription="@null"
             android:layout_marginBottom="5dp"
+            android:visibility="invisible"
+            android:onClick="saveExpandableFabClick"
             />
 
         <ImageButton
@@ -62,9 +62,10 @@
             android:layout_height="56dp"
             android:background="@drawable/fab_background"
             android:layout_marginRight="5dp"
-            android:src="@drawable/ic_traingle"
-            android:id="@+id/fab_button"
+            android:src="@drawable/ic_inverted_traingle"
+            android:id="@+id/fab_main_button"
             android:clickable="true"
+            android:onClick="fabButtonClick"
             android:contentDescription="@null"
             />
 
@@ -74,4 +75,3 @@
     </android.support.design.widget.CoordinatorLayout>
 
 
-</RelativeLayout>
