@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton share_fab_expanded;
     private ImageButton save_fab_expanded;
     private ImageButton link_fab_expanded;
-    private Animation bounce_animate;
+    private LinearLayout container_expandable_fab;
+    private Animation exapandable_fab_animation;
     private boolean show_expandable_fab = false;
 
 
@@ -31,10 +33,14 @@ public class MainActivity extends AppCompatActivity {
     private void hideExpandableFabs() {
         Log.d(TAG,"hide Expandable Fabs");
         fab_button.setImageResource(R.drawable.ic_inverted_traingle);
-        share_fab_expanded.setVisibility(View.GONE);
-        save_fab_expanded.setVisibility(View.GONE);
-        link_fab_expanded.setVisibility(View.GONE);
-    }
+        if (container_expandable_fab.getAnimation()!=null)
+        {
+            Log.d(TAG,"Container animation not null, cancelled and cleared");
+            container_expandable_fab.getAnimation().cancel();
+            container_expandable_fab.clearAnimation();
+        }
+        container_expandable_fab.setVisibility(View.INVISIBLE);
+      }
 
 
 
@@ -44,7 +50,20 @@ public class MainActivity extends AppCompatActivity {
         share_fab_expanded = (ImageButton) findViewById(R.id.share_fab_expandable);
         save_fab_expanded = (ImageButton) findViewById(R.id.save_fab_expandable);
         link_fab_expanded = (ImageButton) findViewById(R.id.link_fab_expandable);
-         bounce_animate = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
+        container_expandable_fab = (LinearLayout) findViewById(R.id.expandable_fab_container);
+        setupAnimations();
+
+
+        //Three Animation listener starts here ..
+
+
+
+
+    }
+
+    private void setupAnimations() {
+        Log.d(TAG,"Setting up animation with views");
+        exapandable_fab_animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
 
 
     }
@@ -85,9 +104,20 @@ public class MainActivity extends AppCompatActivity {
     private void showExpandableFabs() {
         Log.d(TAG,"Show Expandable Fab icon and setting animation");
         fab_button.setImageResource(R.drawable.ic_traingle);
-        save_fab_expanded.setVisibility(View.VISIBLE);
-        link_fab_expanded.setVisibility(View.VISIBLE);
-        share_fab_expanded.setVisibility(View.VISIBLE);
+        if (container_expandable_fab.getAnimation()==null)
+        {
+            exapandable_fab_animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+            container_expandable_fab.setAnimation(exapandable_fab_animation);
+            Log.d(TAG,"Container expandable fab animation not set");
+        }
+        else
+        {
+            exapandable_fab_animation.start();
+            Log.d(TAG,"expandable fab already have an animation just starting it back");
+        }
+        container_expandable_fab.setVisibility(View.VISIBLE);
+
+
 
     }
 

@@ -11,18 +11,26 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+    <LinearLayout
+        android:id="@+id/expandable_fab_container"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+
     <ImageButton
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/expandable_fab"
-        android:layout_marginRight="3dp"
         android:src="@drawable/ic_share"
         android:id="@+id/share_fab_expandable"
         android:clickable="true"
         android:contentDescription="@null"
         android:layout_marginBottom="5dp"
-        android:visibility="invisible"
         android:onClick="shareExpandableFabClick"
         />
 
@@ -31,13 +39,11 @@
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/expandable_fab"
-        android:layout_marginRight="3dp"
         android:src="@drawable/ic_link"
         android:id="@+id/link_fab_expandable"
         android:clickable="true"
         android:contentDescription="@null"
         android:layout_marginBottom="5dp"
-        android:visibility="invisible"
         android:onClick="linkExpandableFabClick"
         />
 
@@ -47,17 +53,17 @@
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/expandable_fab"
-            android:layout_marginRight="3dp"
             android:src="@drawable/ic_heart_filled"
             android:id="@+id/save_fab_expandable"
             android:clickable="true"
             android:contentDescription="@null"
             android:layout_marginBottom="5dp"
-            android:visibility="invisible"
             android:onClick="saveExpandableFabClick"
             />
+    </LinearLayout>
 
-        <ImageButton
+
+    <ImageButton
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:background="@drawable/fab_background"
